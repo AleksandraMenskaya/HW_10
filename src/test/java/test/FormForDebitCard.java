@@ -19,7 +19,6 @@ public class FormForDebitCard extends TestBaseTinkoff {
     @DisplayName("Валидация поля Дата рождения")
     @Tag("FormForDebitCard")
     @Tag("negative")
-    @Tag("AllTests")
     @ArgumentsSource(BirthdayArgumentProvider.class)
     @ParameterizedTest(name = "Для даты {0} текст валидации должен быть {1}")
     void successfulSendFormForDebitCard(String birthday, String ValidationText) {
@@ -33,7 +32,6 @@ public class FormForDebitCard extends TestBaseTinkoff {
     @DisplayName("Локализация страницы для определенного url")
     @Tag("FormForDebitCard")
     @Tag("positive")
-    @Tag("AllTests")
     @CsvSource(value = {
             "cards/debit-cards/tinkoff-black/foreign/kg/ , Россияда жашоо жана иштөө үчүн ыңгайлуу карта",
             "cards/debit-cards/tinkoff-black/foreign/uz/ , Rossiyada yashash va ishlash uchun qulay karta",
@@ -49,7 +47,7 @@ public class FormForDebitCard extends TestBaseTinkoff {
 
     @DisplayName("Первый элемент поисковой выдачи содержит текст запроса")
     @Tag("positive")
-    @Tag("AllTests")
+    @Tag("FormForDebitCard")
     @ParameterizedTest(name = "Если искать {0}, то первый элемент в поисковой выдачи будет {0}")
     @ValueSource(strings = {
             "Как скачать приложение",
@@ -66,7 +64,7 @@ public class FormForDebitCard extends TestBaseTinkoff {
 
     @DisplayName("Проверка заголовков страницы для тоглов с указанием возраста")
     @Tag("positive")
-    @Tag("AllTests")
+    @Tag("FormForDebitCard")
     @CsvSource(value = {
             "1, Дебетовую Tinkoff Black можно получить с 14 лет. Копи и получай кэшбэк до 30% за покупки",
             "2, Получайте кэшбэк в рублях за траты в ресторанах, кино, супермаркетах, магазинах одежды",
@@ -83,19 +81,18 @@ public class FormForDebitCard extends TestBaseTinkoff {
     }
 
 
-    @DisplayName("Проверка дизайна карты")
+    @DisplayName("Проверка дизайов карты")
     @Tag("FormForDebitCard")
     @Tag("positive")
-    @Tag("AllTests")
     @ValueSource(strings = {
             "/cards/debit-cards/tinkoff-black/",
             "cards/debit-cards/tinkoff-black/foreign/eng/"
     })
     @ParameterizedTest(name = "Для url {0} отображаются правильные дизайна карт")
-    void CheckChangeImage () {
+    void CheckChangeImage (String UrlPage) {
         Pair<String, String>[] URLs = (new URLsForTestDesign()).URLs;
 
-        open("/cards/debit-cards/tinkoff-black/");
+        open(UrlPage);
         $("#form").scrollIntoView(true);
         checkFullAndPreview(URLs[3].getRight(), URLs[3].getLeft());
 
