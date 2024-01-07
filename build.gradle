@@ -1,9 +1,6 @@
 plugins {
     id 'java-library'
-}
-
-repositories {
-    mavenCentral()
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 compileJava {
@@ -14,16 +11,63 @@ compileTestJava {
     options.encoding = 'UTF-8'
 }
 
-dependencies {
-    testImplementation(
-            "com.codeborne:selenide:6.19.1",
-            "com.github.javafaker:javafaker:1.0.2",
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            "org.slf4j:slf4j-simple:2.0.7"
-    )
-    testImplementation 'junit:junit:4.13.1'
+repositories {
+    mavenCentral()
 }
 
-test {
+def allureVersion = "2.21.0",
+    selenideVersion = "6.19.1"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    testImplementation(
+            'io.qameta.allure:allure-junit5:2.16.0',
+            "com.codeborne:selenide:$selenideVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "org.junit.jupiter:junit-jupiter:5.10.0",
+            'org.slf4j:slf4j-simple:2.0.7'
+    )
+}
+
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task FormForDebitCard(type: Test) {
+    useJUnitPlatform {
+        includeTags("FormForDebitCard")
+    }
+}
+
+task positive_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("positive")
+    }
+}
+
+task negative_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("negative")
+    }
 }
