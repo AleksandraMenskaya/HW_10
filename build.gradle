@@ -54,7 +54,7 @@ tasks.withType(Test) {
     }
 }
 
-task FormForDebitCard(type: Test) {
+task AllTest(type: Test) {
     useJUnitPlatform {
         includeTags("AllTests")
     }
