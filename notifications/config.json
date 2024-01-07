@@ -3,7 +3,7 @@
     "project": "AYM_Ptoject",
     "environment": "Test",
     "comment": "comment here @aymenskaya",
-    "reportLink": "https://jenkins.autotests.cloud/job/TinkoffTestDebitCard/34/",
+    "reportLink": "https://jenkins.autotests.cloud/job/TinkoffTestDebitCard/7/",
     "language": "en",
     "allureFolder": "build/allure",
     "enableChart": true
