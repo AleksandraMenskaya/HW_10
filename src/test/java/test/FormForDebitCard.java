@@ -1,6 +1,6 @@
 package test;
 
-import com.codeborne.selenide.Condition;
+import static com.codeborne.selenide.Selenide.sleep;
 import data.BirthdayArgumentProvider;
 import data.URLsForTestDesign;
 import org.apache.commons.lang3.tuple.Pair;
@@ -60,7 +60,7 @@ public class FormForDebitCard extends TestBaseTinkoff {
         open("help/");
         $("[data-qa-type=\"uikit/popover.children\"]").click();
         $("[data-qa-type=\"uikit/popover.children\"] input[type=\"text\"]").setValue(textSearch).pressEnter();
-        $("[data-qa-type=\"uikit/dropdown.item\"]").should(Condition.visible);
+        sleep(5000);
         $("[data-qa-type=\"uikit/dropdown.item\"]").shouldHave(text(textSearch));
     }
 
