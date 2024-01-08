@@ -60,7 +60,7 @@ public class FormForDebitCard extends TestBaseTinkoff {
         open("help/");
         $("[data-qa-type=\"uikit/popover.children\"]").click();
         $("[data-qa-type=\"uikit/popover.children\"] input[type=\"text\"]").setValue(textSearch).pressEnter();
-        sleep(10000);
+        sleep(15000);
         $("[data-qa-type=\"uikit/dropdown.item\"]").shouldHave(text(textSearch));
     }
 
