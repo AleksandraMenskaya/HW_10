@@ -1,9 +1,9 @@
 {
   "base": {
-    "project": "AYM_Ptoject",
+    "project": "DebitCard_Ptoject",
     "environment": "Test",
     "comment": "comment here @aymenskaya",
-    "reportLink": "https://jenkins.autotests.cloud/job/TinkoffTestDebitCard/7/",
+    "reportLink": "https://jenkins.autotests.cloud/job/TinkoffTestDebitCard/9/",
     "language": "en",
     "allureFolder": "build/allure",
     "enableChart": true
