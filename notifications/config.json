@@ -1,0 +1,17 @@
+{
+  "base": {
+    "project": "DebitCard_Ptoject",
+    "environment": "Test",
+    "comment": "comment here @aymenskaya",
+    "reportLink": "https://jenkins.autotests.cloud/job/TinkoffTestDebitCard/9/",
+    "language": "en",
+    "allureFolder": "allure-report",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "6387712901:AAELk11AMePtkJvGv1ygXj1dGZTC00ZhfHQ",
+    "chat": "-1001860688066",
+    "replyTo": "@aymenskaya"
+  }
+}
+
